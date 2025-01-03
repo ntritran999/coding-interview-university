@@ -80,14 +80,14 @@ void LinkedList::push_front(int item) {
 }
 
 void LinkedList::push_back(int item) {
-    if (head == nullptr) {
+    if (head == nullptr)
         head = createNode(item);
-        return;
+    else {
+        Node *p = head;
+        while (p->next)
+            p = p->next;
+        p->next = createNode(item);
     }
-    Node *p = head;
-    while (p->next)
-        p = p->next;
-    p->next = createNode(item);
     size++;
 }
 
@@ -296,15 +296,12 @@ void TailedLinkedList::push_front(int item) {
 }
 
 void TailedLinkedList::push_back(int item) {
-    if (head == nullptr) {
+    if (head == nullptr)
         head = tail = createNode(item);
-        return;
+    else {
+        tail->next = createNode(item);
+        tail = tail->next;
     }
-    Node *p = head;
-    while (p->next)
-        p = p->next;
-    p->next = createNode(item);
-    tail = p->next;
     size++;
 }
 
