@@ -43,7 +43,7 @@ Array::Array(int n) : Array(){
 }
 
 Array::~Array() {
-    delete data;
+    delete[] data;
     data = nullptr;
     size = capacity = 0;
 }
@@ -55,7 +55,7 @@ void Array::resize(int new_capacity) {
     for (int i = 0; i < capacity; i++)
         *(data + i) = *(tmp + i);
 
-    delete tmp;
+    delete[] tmp;
 }
 
 int Array::size_() {
