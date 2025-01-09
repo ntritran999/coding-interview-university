@@ -12,17 +12,17 @@ void sift_up(int a[], int n, int index) {
     }
 }
 
-void sift_down(int a[], int left, int right) {
-    int child = 2 * left + 1;
-    if (child >= right)
+void sift_down(int a[], int index, int size) {
+    int child = 2 * index + 1;
+    if (child >= size)
         return;
 
     if (a[child] < a[child + 1])
         child++;
 
-    if (a[child] > a[left]) {
-        swap(a[child], a[left]);
-        sift_down(a, child, right);
+    if (a[child] > a[index]) {
+        swap(a[child], a[index]);
+        sift_down(a, child, size);
     }
 }
 
